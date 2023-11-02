@@ -71,7 +71,7 @@ const Home = () => {
                     <h1 className="text-primary font-semibold text-4xl">Grab upto 50% off on selected Headphones</h1>
                     <button className="rounded-2xl py-3 px-6 bg-green-800 text-white align-middle whitespace-nowrap w-fit hover:bg-transparent hover:text-primary hover:cursor-pointer hover:border hover:border-primary transition">Buy Now</button>
                 </div>
-                <img className="h-72 w-80" src="../../public/images/products/lady.png" alt="Girl with Headphones"/>
+                <img className="h-72 w-80" src="../assets/lady.png" alt="Girl with Headphones"/>
             </div>
             <div className="flex mx-6 my-14 gap-3">
                 <div className="rounded-2xl flex items-center gap-1 px-4 py-2 font-semibold bg-neutral-200 text-neutral-900 cursor-pointer">
