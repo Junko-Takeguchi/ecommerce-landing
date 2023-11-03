@@ -1,18 +1,16 @@
 import {AiOutlineDown} from "react-icons/ai";
 import {useCallback, useMemo, useState} from "react";
-import {useRecoilState} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import productsAtom from "../Store/productsAtom.ts";
 import {MdFilterListOff} from "react-icons/md";
+import initialProductsAtom from "../Store/initialProductsAtom.ts";
 
 const Filters = () => {
     const [products, setProducts] = useRecoilState(productsAtom);
     const [isCategoryHidden, setIsCategoryHidden] = useState(false);
     const [isPriceHidden, setIsPriceHidden] = useState(false);
     const [isRatingHidden, setIsRatingHidden] = useState(false);
-
-    const initialProducts = useMemo(() => {
-        return [...products];
-    }, []);
+    const initialProducts = useRecoilValue(initialProductsAtom);
 
     const categories = useMemo(() => {
         const categorySet = new Set<string>();
@@ -54,8 +52,8 @@ const Filters = () => {
     }, [products]);
 
     return (
-        <div className="flex justify-between mx-6 my-14 gap-3">
-            <div className="flex gap-3">
+        <div className="flex flex-wrap justify-between mx-6 my-14 gap-3">
+            <div className="flex flex-wrap gap-3">
                 <div className="relative inline-block">
                     <div
                         className="
@@ -77,7 +75,7 @@ const Filters = () => {
                     >
                         <span className="flex items-center gap-1">Category <AiOutlineDown/></span>
                     </div>
-                    <div className={`absolute ${!isCategoryHidden ? "hidden" : "block"} mt-2 bg-neutral-200 border border-gray-300 rounded-lg shadow-lg`}>
+                    <div className={`absolute z-10 ${!isCategoryHidden ? "hidden" : "block"} mt-2 bg-neutral-200 border border-gray-300 rounded-lg shadow-lg`}>
                         <div className="flex flex-col">
                             {categories && categories.map((category) => (
                                 <span
@@ -93,15 +91,15 @@ const Filters = () => {
                 <div className="relative inline-block">
                     <div
                         className="
-                    rounded-2xl
-                    px-4
-                    py-2
-                    font-semibold
-                    bg-neutral-200
-                    text-neutral-900
-                    cursor-pointer
-                    relative
-                    inline-block
+                        rounded-2xl
+                        px-4
+                        py-2
+                        font-semibold
+                        bg-neutral-200
+                        text-neutral-900
+                        cursor-pointer
+                        relative
+                        inline-block
                 "
                         onClick={() => {
                             setIsPriceHidden(!isPriceHidden);
@@ -111,7 +109,7 @@ const Filters = () => {
                     >
                         <span className="flex items-center gap-1">Price <AiOutlineDown/></span>
                     </div>
-                    <div className={`absolute ${!isPriceHidden ? "hidden" : "block"} mt-2 bg-neutral-200 border border-gray-300 rounded-lg shadow-lg`}>
+                    <div className={`absolute z-10 ${!isPriceHidden ? "hidden" : "block"} mt-2 bg-neutral-200 border border-gray-300 rounded-lg shadow-lg`}>
                         <div className="flex flex-col">
                         <span
                             className="p-2 px-4 py-2 w-full hover:cursor-pointer hover:bg-white transition rounded-lg whitespace-nowrap"
@@ -149,7 +147,7 @@ const Filters = () => {
                     >
                         <span className="flex items-center gap-1">Ratings <AiOutlineDown/></span>
                     </div>
-                    <div className={`absolute ${!isRatingHidden ? "hidden" : "block"} mt-2 bg-neutral-200 border border-gray-300 rounded-lg shadow-lg`}>
+                    <div className={`absolute z-10 ${!isRatingHidden ? "hidden" : "block"} mt-2 bg-neutral-200 border border-gray-300 rounded-lg shadow-lg`}>
                         <div className="flex flex-col">
                         <span
                             className="p-2 px-4 py-2 w-full hover:cursor-pointer hover:bg-white transition rounded-lg whitespace-nowrap"

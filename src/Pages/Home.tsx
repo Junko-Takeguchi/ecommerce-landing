@@ -4,8 +4,9 @@ import Card from "../Components/Card.tsx";
 import Navbar from "../Components/Navbar.tsx";
 import Banner from "../Components/Banner.tsx";
 import Filters from "../Components/Filters.tsx";
-import {useRecoilState} from "recoil";
+import {useRecoilState, useSetRecoilState} from "recoil";
 import productsAtom from "../Store/productsAtom.ts";
+import initialProductsAtom from "../Store/initialProductsAtom.ts";
 
 interface product {
     id: number,
@@ -24,6 +25,7 @@ interface product {
 const Home = () => {
     const [products, setProducts] = useRecoilState(productsAtom);
     const [page, setPage] = useState(1);
+    const setInitialProducts = useSetRecoilState(initialProductsAtom);
 
     const totalPages = useMemo(() => {
         return Math.ceil(products.length/10);
@@ -53,7 +55,10 @@ const Home = () => {
     
     useEffect(() => {
         axios.get("https://dummyjson.com/products?limit=100")
-            .then(res => setProducts(res.data.products))
+            .then((res) => {
+                setProducts(res.data.products);
+                setInitialProducts(res.data.products);
+            })
             .catch(e => console.log(e));
     }, []);
     
@@ -68,7 +73,7 @@ const Home = () => {
                     <Card key={product.id} title={product.title} rating={product.rating} price={product.price} thumbnail={product.thumbnail} />
                 ))}
             </div>
-            <div className="mt-7 flex gap-4 justify-center">
+            <div className="mt-7 flex flex-wrap gap-4 justify-center">
                 {pageButtons}
             </div>
         </div>
