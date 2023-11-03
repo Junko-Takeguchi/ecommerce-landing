@@ -1,10 +1,11 @@
-// import React from 'react';
-
-import { AiOutlineDown} from "react-icons/ai";
-// import Card from "../Components/Card.tsx";
 import React, {useEffect, useMemo, useState} from "react";
 import axios from "axios";
 import Card from "../Components/Card.tsx";
+import Navbar from "../Components/Navbar.tsx";
+import Banner from "../Components/Banner.tsx";
+import Filters from "../Components/Filters.tsx";
+import {useRecoilState} from "recoil";
+import productsAtom from "../Store/productsAtom.ts";
 
 interface product {
     id: number,
@@ -21,7 +22,7 @@ interface product {
 }
 
 const Home = () => {
-    const [products, setProducts] = useState<product[]>([]);
+    const [products, setProducts] = useRecoilState(productsAtom);
     const [page, setPage] = useState(1);
 
     const totalPages = useMemo(() => {
@@ -57,38 +58,12 @@ const Home = () => {
     }, []);
     
     return (
-        <div className="px-4 mb-8">
-            <div className="flex w-screen justify-between py-4 px-6">
-                <span className="text-2xl font-bold text-primary">Ecommerce</span>
-                <div className="flex gap-3">
-                    <span className="font-semibold text-neutral-800 hover:cursor-pointer hover:underline hover:text-primary">Cart</span>
-                    <span className="font-semibold text-neutral-800 hover:cursor-pointer hover:underline hover:text-primary">Account</span>
-                    <span className="font-semibold text-neutral-800 hover:cursor-pointer hover:underline hover:text-primary">My Orders</span>
-                </div>
-            </div>
-            <div className="mx-6 rounded-xl flex justify-evenly gap-3 bg-peach px-6">
-                <div className="flex gap-4 flex-col justify-evenly">
-                    <h1 className="text-primary font-semibold text-4xl">Grab upto 50% off on selected Headphones</h1>
-                    <button className="rounded-2xl py-3 px-6 bg-green-800 text-white align-middle whitespace-nowrap w-fit hover:bg-transparent hover:text-primary hover:cursor-pointer hover:border hover:border-primary transition">Buy Now</button>
-                </div>
-                <img className="h-72 w-80" src="https://thumbs2.imgbox.com/eb/e2/NHtsHEXb_t.png" alt="Girl with Headphones"/>
-            </div>
-            <div className="flex mx-6 my-14 gap-3">
-                <div className="rounded-2xl flex items-center gap-1 px-4 py-2 font-semibold bg-neutral-200 text-neutral-900 cursor-pointer">
-                    <span>Category</span>
-                    <AiOutlineDown/>
-                </div>
-                <div className="rounded-2xl flex items-center gap-1 px-4 py-2 font-semibold bg-neutral-200 text-neutral-900 cursor-pointer">
-                    <span>Price</span>
-                    <AiOutlineDown/>
-                </div>
-                <div className="rounded-2xl flex items-center gap-1 px-4 py-2 font-semibold bg-neutral-200 text-neutral-900 cursor-pointer">
-                    <span>Review</span>
-                    <AiOutlineDown/>
-                </div>
-            </div>
+        <div className="mx-8 mb-8">
+            <Navbar/>
+            <Banner/>
+            <Filters/>
             <h1 className="text-3xl text-neutral-800 font-bold p-6 mb-4"> Shop Now!</h1>
-            <div className="flex flex-wrap gap-3 mx-6">
+            <div className="flex flex-wrap justify-center gap-3">
                 {products.length> 0 && products.slice((page*10)-10, page*10).map((product: product) => (
                     <Card key={product.id} title={product.title} rating={product.rating} price={product.price} thumbnail={product.thumbnail} />
                 ))}

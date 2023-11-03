@@ -8,7 +8,8 @@ export default {
     extend: {
       colors: {
         "primary" : "#003d29",
-        "peach" : "#fbf0e4"
+        "peach" : "#fbf0e4",
+        "skin" : "#ffa372"
       }
     },
   },
