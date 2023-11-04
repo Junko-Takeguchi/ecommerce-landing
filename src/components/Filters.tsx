@@ -1,9 +1,9 @@
 import {AiOutlineDown} from "react-icons/ai";
 import React, {useCallback, useMemo, useState} from "react";
 import {useRecoilState, useRecoilValue} from "recoil";
-import productsAtom from "../Store/productsAtom.ts";
+import productsAtom from "../store/productsAtom.ts";
 import {MdFilterListOff} from "react-icons/md";
-import initialProductsAtom from "../Store/initialProductsAtom.ts";
+import initialProductsAtom from "../store/initialProductsAtom.ts";
 
 interface filterProps {
     filterClick: () => void;

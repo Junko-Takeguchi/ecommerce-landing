@@ -1,12 +1,12 @@
 import React, {useCallback, useEffect, useMemo, useState} from "react";
 import axios from "axios";
-import Card from "../Components/Card.tsx";
-import Navbar from "../Components/Navbar.tsx";
-import Banner from "../Components/Banner.tsx";
-import Filters from "../Components/Filters.tsx";
+import Card from "../components/Card.tsx";
+import Navbar from "../components/Navbar.tsx";
+import Banner from "../components/Banner.tsx";
+import Filters from "../components/Filters.tsx";
 import {useRecoilState, useSetRecoilState} from "recoil";
-import productsAtom from "../Store/productsAtom.ts";
-import initialProductsAtom from "../Store/initialProductsAtom.ts";
+import productsAtom from "../store/productsAtom.ts";
+import initialProductsAtom from "../store/initialProductsAtom.ts";
 
 interface product {
     id: number,
