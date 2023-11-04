@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useCallback, useEffect, useMemo, useState} from "react";
 import axios from "axios";
 import Card from "../Components/Card.tsx";
 import Navbar from "../Components/Navbar.tsx";
@@ -30,7 +30,11 @@ const Home = () => {
     const totalPages = useMemo(() => {
         return Math.ceil(products.length/10);
     }, [products]);
-    
+
+    const filterClick = useCallback(() => {
+        setPage(1);
+    }, []);
+
     const pageButtons = useMemo(() => {
         const buttonArray: React.ReactElement[] = [];
         for (let i = 1; i <= totalPages; i++) {
@@ -66,7 +70,7 @@ const Home = () => {
         <div className="mx-8 mb-8">
             <Navbar/>
             <Banner/>
-            <Filters/>
+            <Filters filterClick={filterClick}/>
             <h1 className="text-3xl text-neutral-800 font-bold p-6 mb-4"> Shop Now!</h1>
             <div className="flex flex-wrap justify-center gap-3">
                 {products.length> 0 && products.slice((page*10)-10, page*10).map((product: product) => (

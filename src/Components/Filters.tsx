@@ -1,11 +1,15 @@
 import {AiOutlineDown} from "react-icons/ai";
-import {useCallback, useMemo, useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import {useRecoilState, useRecoilValue} from "recoil";
 import productsAtom from "../Store/productsAtom.ts";
 import {MdFilterListOff} from "react-icons/md";
 import initialProductsAtom from "../Store/initialProductsAtom.ts";
 
-const Filters = () => {
+interface filterProps {
+    filterClick: () => void;
+}
+
+const Filters: React.FC<filterProps> = ({ filterClick }) => {
     const [products, setProducts] = useRecoilState(productsAtom);
     const [isCategoryHidden, setIsCategoryHidden] = useState(false);
     const [isPriceHidden, setIsPriceHidden] = useState(false);
@@ -24,6 +28,7 @@ const Filters = () => {
 
     const sortByCategory = useCallback((category: string) => {
         const filteredProducts = [...initialProducts].filter((product) => product.category === category);
+        filterClick();
         setProducts(filteredProducts);
     }, [initialProducts]);
 
@@ -35,7 +40,7 @@ const Filters = () => {
         } else if (type === "Low to High") {
             sortedProducts.sort((a, b) => a.rating - b.rating);
         }
-
+        filterClick();
         setProducts(sortedProducts);
     }, [products]);
 
@@ -47,7 +52,7 @@ const Filters = () => {
         } else if (type === "Low to High") {
             sortedProducts.sort((a, b) => a.price - b.price);
         }
-
+        filterClick();
         setProducts(sortedProducts);
     }, [products]);
 
