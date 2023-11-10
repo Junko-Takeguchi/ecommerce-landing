@@ -1,27 +1,37 @@
-# React + TypeScript + Vite
+# Ecommerce Products
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a simple ecommerce landing built with React and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Description](#description)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
 
-## Expanding the ESLint configuration
+## Description
+The Ecommerce Products project is a responsive React application that showcases a collection of products. Users can browse the available products and apply filters.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- Pagination
+- Responsive design using React and Tailwind CSS
+- Product filtering by category, price, and ratings
+- Sort products by category, price, and ratings
+- Clear filters option
+- Stylish banner with promotional information
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## Installation
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Clone the repository:
+`git clone https://github.com/your-username/headphones-store.git`
+
+3. Navigate to the project directory:
+`cd headphones-store`
+
+4. Install dependencies:
+`npm install`
+
+## Usage
+`npm start`
+
