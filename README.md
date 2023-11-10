@@ -24,7 +24,7 @@ The Ecommerce Products project is a responsive React application that showcases 
 ## Installation
 
 1. Clone the repository:
-`git clone https://github.com/your-username/headphones-store.git`
+`git clone https://github.com/Junko-Takeguchi/ecommerce-landing.git`
 
 3. Navigate to the project directory:
 `cd headphones-store`
